@@ -44,38 +44,38 @@ sequenceDiagram
     deactivate consumer
 ```
 
- ##APIs Design
+ ## APIs Design
 
-###Products
+### Products
 | Description        | Method | URI                   |
 |--------------------|--------|-----------------------|
 | Get all products   | GET    | /products             |
 | Get product detail | GET    | /products/{productId} |
 
-###Baskets
+### Baskets
 | Description                     | Method | URI                 |
 |---------------------------------|--------|---------------------|
 | Get user's basket               | GET    | /baskets/{basketId} |
 | Create user's basket            | POST   | /baskets            |
 | Update user's basket by product | UPDATE | /baskets            |
 
-###Checkout
+### Checkout
 | Description                | Method | URI       |
 |----------------------------|--------|-----------|
 | checkout selected products | POST   | /checkout |
 
-###Shipping
+### Shipping
 | Description              | Method | URI                    |
 |--------------------------|--------|------------------------|
 | Add shipping information | POST   | /shipping              |
 
-###PaymentMethods
+### PaymentMethods
 | Description                     | Method | URI             |
 |---------------------------------|--------|-----------------|
 | Get available payment methods   | GET    | /paymentMethods |
 
 
-###Orders
+### Orders
 | Description      | Method | URI     |
 |------------------|--------|---------|
 | create new order | POST   | /Orders |
