@@ -2,46 +2,39 @@
 
 ```mermaid
 sequenceDiagram
-    actor consumer
+    actor customer
+    participant web app
     participant server
     
-    activate consumer
-    consumer->>server: 1.1 Search product by name
-    activate server
-    server-->>consumer: 1.2 Return list of match products
-    deactivate server
+   
+    customer->>web app: 1.search products by name
+    web app->>server: get products by name
+    server-->>web app: return list of product
+    web app-->> customer: show list of product result
      
-    consumer->>server: 2. Get a product detail
-    activate server
-    server-->>consumer: 3. Return product detail
-    deactivate server
+    customer->>web app: 2.click on interested product
+    web app->>server: get product detail by id
+    server-->>web app: return product detail
+    web app-->> customer: 3.show detail of selected product
     
-    consumer->>server: 4. move product to basket
-    activate server
-    server-->>consumer: 5. return updated basket
-    deactivate server
+    customer->>web app: 4.click on add to basket button
+    web app->>server: add product to new basket
+    server-->>web app: return updating basket
+    web app-->> customer: 5.show data in basket
     
-    consumer->>server: 6.1 checkout products
-    activate server
-    server-->>consumer: 6.2 return status of checkout
-    deactivate server
+    customer->>web app: 6.click checkout for product in basket
+    web app->>server: create checkout
+    server-->>web app: return status of checkout
+    web app-->> customer: navigate to add shipping step
     
-    consumer->>server: 7.1 Add shipping information
-    activate server
-    server-->>consumer: 7.2 Return stutus of adding
-    deactivate server
-    
-    consumer->>server: 8.1 Add payment method
-    activate server
-    server-->>consumer: 8.2 Return status of adding payment method
-    deactivate server
-    
-    consumer->>server: 9. Comfirm to Order
-    activate server
-    server-->>consumer: 10. Return Summary Receipt
-    deactivate server
-    
-    deactivate consumer
+    customer->>web app: 7.add shipping info and click to next process
+    web app-->> customer: navigate to add payment step
+    customer->>web app: 8.add payment method 
+    customer->>web app: 9.click comfirm to order
+    web app->>server: create order by paymemt and shiping 
+    server-->>web app: return slip
+    web app-->> customer:10. navigate to summary page and show slip
+   
 ```
 
  ## APIs Design
@@ -53,32 +46,21 @@ sequenceDiagram
 | Get product detail | GET    | /products/{productId} |
 
 ### Baskets
-| Description                     | Method | URI                 |
-|---------------------------------|--------|---------------------|
-| Get user's basket               | GET    | /baskets/{basketId} |
-| Create user's basket            | POST   | /baskets            |
-| Update user's basket by product | UPDATE | /baskets            |
+| Description               | Method | URI                          |
+|---------------------------|--------|------------------------------|
+| Get basket by id          | GET    | /baskets/{basketId}          |
+| Create basket             | POST   | /baskets                     |
+| Update product on  basket | UPDATE | /baskets/{basketId}/products |
 
 ### Checkout
-| Description                | Method | URI       |
-|----------------------------|--------|-----------|
-| checkout selected products | POST   | /checkout |
-
-### Shipping
-| Description              | Method | URI                    |
-|--------------------------|--------|------------------------|
-| Add shipping information | POST   | /shipping              |
-
-### PaymentMethods
-| Description                     | Method | URI             |
-|---------------------------------|--------|-----------------|
-| Get available payment methods   | GET    | /paymentMethods |
-
+| Description        | Method | URI       |
+|--------------------|--------|-----------|
+| checkout products  | POST   | /checkout |
 
 ### Orders
-| Description      | Method | URI     |
-|------------------|--------|---------|
-| create new order | POST   | /Orders |
+| Description                              | Method | URI     |
+|------------------------------------------|--------|---------|
+| create new order by payment and shipping | POST   | /Orders |
 
 
 # Models
