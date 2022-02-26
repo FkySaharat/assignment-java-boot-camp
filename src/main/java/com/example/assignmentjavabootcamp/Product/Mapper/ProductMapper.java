@@ -1,7 +1,8 @@
-package com.example.assignmentjavabootcamp.Product;
+package com.example.assignmentjavabootcamp.Product.Mapper;
 
+import com.example.assignmentjavabootcamp.Product.Model.Product;
+import com.example.assignmentjavabootcamp.Product.Model.ProductResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
 @Component

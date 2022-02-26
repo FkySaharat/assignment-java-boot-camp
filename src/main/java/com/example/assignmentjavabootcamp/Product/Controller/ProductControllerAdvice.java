@@ -1,6 +1,6 @@
-package com.example.assignmentjavabootcamp.Product;
+package com.example.assignmentjavabootcamp.Product.Controller;
 
-import com.example.assignmentjavabootcamp.Product.ProductNotFoundException;
+import com.example.assignmentjavabootcamp.Product.Exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

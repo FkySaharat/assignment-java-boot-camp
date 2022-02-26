@@ -1,27 +1,37 @@
-package com.example.assignmentjavabootcamp.Product;
+package com.example.assignmentjavabootcamp.Product.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Product {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy =  GenerationType.SEQUENCE)
+    @Column(updatable = false, nullable = false)
+    private long id;
+
+    @Column(nullable = false)
     private String name;
+
     private String description;
+
     private int unitInStock;
+
     private double price;
+
     private boolean isPackage;
+
     private int categoryId;
 
-    public int getId() {
+    public Product(){
+
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(long id) {this.id = id;}
 
     public String getName() {
         return name;

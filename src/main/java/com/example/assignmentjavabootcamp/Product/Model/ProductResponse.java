@@ -1,4 +1,4 @@
-package com.example.assignmentjavabootcamp.Product;
+package com.example.assignmentjavabootcamp.Product.Model;
 
 import lombok.Getter;
 import lombok.Setter;
