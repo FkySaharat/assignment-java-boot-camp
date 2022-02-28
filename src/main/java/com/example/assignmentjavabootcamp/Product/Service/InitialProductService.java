@@ -11,8 +11,14 @@ import java.util.List;
 @Service
 public class InitialProductService {
 
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     @Autowired
     private ProductRepository productRepository;
+
+
 
     public void  initialData(){
         List<Product> productList = new ArrayList<>();
