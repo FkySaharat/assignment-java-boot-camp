@@ -1,6 +1,10 @@
 package com.example.assignmentjavabootcamp.Product.Model;
 
+import org.mapstruct.TargetType;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -23,9 +27,12 @@ public class Product {
 
     private int categoryId;
 
-    public Product(){
+    private int storeId;
 
-    }
+    private String storeAddress;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductImage> images = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -51,6 +58,10 @@ public class Product {
 
     public int getUnitInStock() {
         return unitInStock;
+    }
+
+    public void setUnitInStock(int unitInStock) {
+        this.unitInStock = unitInStock;
     }
 
     public void setAmount(int amount) {
@@ -81,5 +92,20 @@ public class Product {
         this.categoryId = categoryId;
     }
 
+    public int getStoreId() {
+        return storeId;
+    }
 
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
+    }
+
+
+    public String getStoreAddress() {
+        return storeAddress;
+    }
+
+    public void setStoreAddress(String storeAddress) {
+        this.storeAddress = storeAddress;
+    }
 }
